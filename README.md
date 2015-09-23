@@ -4,4 +4,5 @@
 ## Why?
 Native `ctrl + f` is not good at searching some keywords in source page, for example, it's not case sensitive
 
+## Snapshot
 ![](snapshot.png)
