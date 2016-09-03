@@ -1,8 +1,13 @@
-# github-find
-**[WIP]** highlight selected words and provide [up] and [down] shortcuts to jump between those matched words
+# github-source-highlight
+
+> highlight selected word in github source view
+
+![](snapshot.png)
 
 ## Why?
-Native `ctrl + f` is not good at searching some keywords in source page, for example, it's not case sensitive
 
-## Snapshot
-![](snapshot.png)
+Native `ctrl + F` is ok, but it doesn't perform so good in searching sometimes, for example, it's not case sensitive
+
+## License
+
+MIT &copy; [fengzilong](https://github.com/fengzilong)
