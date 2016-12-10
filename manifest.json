@@ -11,16 +11,16 @@
 	},
 	"content_scripts": [{
 		"all_frames": true,
-		"js": ["vendor/jquery.min.js", "chrome/inject.js"],
+		"js": ["findAndReplaceDOMText.js", "inject.js"],
 		"matches": ["https://github.com/*"],
 		"run_at": "document_end"
 	}],
 	"background" : {
-		"scripts" : ["chrome/background.js"]
+		"scripts" : []
 	},
 	"content_security_policy": "script-src 'self' 'unsafe-eval';object-src 'self';",
 	"permissions" : [
-		"tabs", "<all_urls>", "declarativeContent"
+		"tabs", "<all_urls>"
 	],
 	"web_accessible_resources" : [
 	]

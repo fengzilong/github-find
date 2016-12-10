@@ -1,12 +1,12 @@
 # github-source-highlight [![build][build-image]][build-url]
 
-> highlight selected word in github source view
+> highlight selected word in github source page
 
-![](snapshot.png)
+![screenshot](screenshot.png)
 
 ## Why?
 
-Native `ctrl + F` is ok, but it doesn't perform so good in searching sometimes, for example, it's not case sensitive
+`ctrl + F` is not case sensitive, and only highlight one matched word in one time, this is why this tool is made
 
 ## License
 
