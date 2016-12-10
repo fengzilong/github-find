@@ -2,11 +2,11 @@
 
 > highlight selected word in github source page
 
-![screenshot](screenshot.png)
+![screenshot](media/screenshot.png)
 
 ## Why?
 
-`ctrl + F` is not case sensitive, and only highlight one matched word in one time, this is why this tool is made
+`ctrl + F` is not case sensitive, and only highlight one matched word in one time
 
 ## License
 
