@@ -1,5 +1,5 @@
 /**
- * findAndReplaceDOMText v 0.4.3
+ * findAndReplaceDOMText v 0.4.5
  * @author James Padolsey http://james.padolsey.com
  * @license http://unlicense.org/UNLICENSE
  *
@@ -93,6 +93,7 @@
 	 * @param {Node} node Element or Text node to search within
 	 * @param {RegExp} options.find The regular expression to match
 	 * @param {String|Element} [options.wrap] A NodeName, or a Node to clone
+	 * @param {String} [options.wrapClass] A classname to append to the wrapping element
 	 * @param {String|Function} [options.replace='$&'] What to replace each match with
 	 * @param {Function} [options.filterElements] A Function to be called to check whether to
 	 *	process an element. (returning true = process element,
@@ -260,7 +261,7 @@
 			 */
 			function getText(node) {
 
-				if (node.nodeType === 3) {
+				if (node.nodeType === Node.TEXT_NODE) {
 					return [node.data];
 				}
 
@@ -273,7 +274,7 @@
 
 				if (node = node.firstChild) do {
 
-					if (node.nodeType === 3) {
+					if (node.nodeType === Node.TEXT_NODE) {
 						txt[i] += node.data;
 						continue;
 					}
@@ -282,7 +283,7 @@
 
 					if (
 						forceContext &&
-						node.nodeType === 1 &&
+						node.nodeType === Node.ELEMENT_NODE &&
 						(forceContext === true || forceContext(node))
 					) {
 						txt[++i] = innerText;
@@ -330,7 +331,7 @@
 
 			out: while (true) {
 
-				if (curNode.nodeType === 3) {
+				if (curNode.nodeType === Node.TEXT_NODE) {
 
 					if (!endPortion && curNode.length + atIndex >= match.endIndex) {
 
@@ -372,7 +373,7 @@
 
 				}
 
-				doAvoidNode = curNode.nodeType === 1 && elementFilter && !elementFilter(curNode);
+				doAvoidNode = curNode.nodeType === Node.ELEMENT_NODE && elementFilter && !elementFilter(curNode);
 
 				if (startPortion && endPortion) {
 
@@ -478,6 +479,7 @@
 
 			var replacement = this.options.replace || '$&';
 			var wrapper = this.options.wrap;
+			var wrapperClass = this.options.wrapClass;
 
 			if (wrapper && wrapper.nodeType) {
 				// Wrapper has been provided as a stencil-node for us to clone:
@@ -495,6 +497,10 @@
 			}
 
 			var el = typeof wrapper == 'string' ? doc.createElement(wrapper) : wrapper;
+
+ 			if (el && wrapperClass) {
+				el.className = wrapperClass;
+			}
 
 			replacement = doc.createTextNode(
 				this.prepareReplacementString(
